@@ -41,3 +41,5 @@ const destDir = path.join(__dirname, 'files-copy');
 copyDir(sourceDir, destDir)
   .then(() => console.log('Клонирование успешно!'))
   .catch((err) => console.error(err));
+
+module.exports = copyDir;
