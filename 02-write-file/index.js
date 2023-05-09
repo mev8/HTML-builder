@@ -15,11 +15,13 @@ console.log('Введите текст или exit для выхода:');
 
 rl.on('line', (input) => {
   if (input === 'exit') {
+    console.log('До свидания!');
     process.exit();
   }
   writeStream.write(`${input}\n`);
 });
 
 rl.on('close', () => {
+  console.log('До свидания!');
   process.exit();
 });
