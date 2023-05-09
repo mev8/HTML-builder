@@ -3,9 +3,8 @@ const path = require('path');
 
 const stylesFolder = path.join(__dirname, 'styles');
 const distFolder = path.join(__dirname, 'project-dist');
-const bundle = 'bundle.css';
 
-async function mergeStyles() {
+async function mergeStyles(outputFileName) {
   try {
     const files = await fs.readdir(stylesFolder, { withFileTypes: true });
     const styles = [];
@@ -15,11 +14,13 @@ async function mergeStyles() {
         styles.push(style);
       }
     }
-    await fs.writeFile(path.join(distFolder, bundle), styles.join('\n'));
+    await fs.writeFile(path.join(distFolder, outputFileName), styles.join('\n'));
     console.log('bundle.css готов!');
   } catch (err) {
     console.error(err);
   }
 }
 
-mergeStyles();
+mergeStyles('bundle.css');
+
+module.exports = mergeStyles;
